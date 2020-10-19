@@ -108,7 +108,7 @@
 			  		<a href="{{ url('/') }}" class="btn btn-default btn-cart-continue">Tiếp tục mua hàng</a>
 			  	</div>
 			  	<div class="col-sm-6 text-center">
-			  		<a href="{{ url('/shopcart') }}" class="btn btn-default btn-view-cart">Xem giỏ hàng</a>
+			  		<a href="{{ url('/cart/shopcart') }}" class="btn btn-default btn-view-cart">Xem giỏ hàng</a>
 			  	</div>
 			 </div>
 		</form>	  	

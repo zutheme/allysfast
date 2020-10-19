@@ -135,14 +135,14 @@ Route::get('teamilk/changequality', ['uses' =>'teamilk\ProductController@changeq
 Route::post('teamilk/changequality', ['uses' =>'teamilk\ProductController@changequality']);
 Route::get('teamilk/cartnumber', ['uses' =>'teamilk\ProductController@cartnumber']);
 Route::post('teamilk/cartnumber', ['uses' =>'teamilk\ProductController@cartnumber']);
-Route::get('shopcart', ['uses' =>'teamilk\ShopCartController@index']);
-Route::post('shopcart', ['uses' =>'teamilk\ShopCartController@index']);
+Route::get('cart/shopcart', ['uses' =>'teamilk\ShopCartController@index']);
+Route::post('cart/shopcart', ['uses' =>'teamilk\ShopCartController@index']);
 //add cart
-Route::get('checkout', ['uses' =>'teamilk\ShopCartController@checkout']);
-Route::post('checkout', ['uses' =>'teamilk\ShopCartController@checkout']);
+Route::get('cart/checkout', ['uses' =>'teamilk\ShopCartController@checkout']);
+Route::post('cart/checkout', ['uses' =>'teamilk\ShopCartController@checkout']);
 //submit checkout
-Route::get('submitcheckout', ['uses' =>'teamilk\ShopCartController@submitcheckout']);
-Route::post('submitcheckout', ['uses' =>'teamilk\ShopCartController@submitcheckout']);
+Route::get('cart/submitcheckout', ['uses' =>'teamilk\ShopCartController@submitcheckout']);
+Route::post('cart/submitcheckout', ['uses' =>'teamilk\ShopCartController@submitcheckout']);
 //add cart
 Route::get('teamilk/complete/{ordernumber}', ['uses' =>'teamilk\ShopCartController@complete']);
 Route::post('teamilk/complete/{ordernumber}', ['uses' =>'teamilk\ShopCartController@complete']);

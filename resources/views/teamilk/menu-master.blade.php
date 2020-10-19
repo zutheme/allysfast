@@ -128,7 +128,7 @@
 
 <li class="c-cart-toggler-wrapper">
 
-    <a href="{{ url('shopcart') }}" class="c-btn-icon c-cart-toggler"><i class="icon-handbag c-cart-icon"></i> <span class="c-cart-number c-theme-bg">0</span></a>
+    <a href="{{ url('/cart/shopcart') }}" class="c-btn-icon c-cart-toggler"><i class="icon-handbag c-cart-icon"></i> <span class="c-cart-number c-theme-bg">0</span></a>
 </li>
 
 {{-- <li class="user-profile"> 

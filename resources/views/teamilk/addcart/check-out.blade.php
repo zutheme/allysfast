@@ -135,7 +135,7 @@
 
 			<div class="container">
 
-				<form class="c-shop-form-1" method="post" action="{{ url('submitcheckout') }}" enctype='application/json'>
+				<form class="c-shop-form-1" method="post" action="{{ url('/cart/submitcheckout') }}" enctype='application/json'>
 
 					{{ csrf_field() }}
 

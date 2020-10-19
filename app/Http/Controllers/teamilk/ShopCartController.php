@@ -98,7 +98,7 @@ class ShopCartController extends Controller
        if(isset($arr_his)||!empty($arr_his)){
             $arr = json_decode($arr_his,true);
             foreach ($arr as  $item) {
-                if($item['trash'] > 0) {
+                if(isset($item['trash']) && $item['trash'] > 0) {
                     $str_qr .= '('.$item['idorder'].','.$item['idcrosstype'].','.$item['parent'].','.$item['idparentcross'].','.$item['input_quality'].','.$item['idproduct'].','.$item['inp_session'].','.$item['trash'].'),';
                     $bool_str = true;
                 }
@@ -279,7 +279,7 @@ class ShopCartController extends Controller
        if(!empty($arr_his)){
             $arr = json_decode($arr_his,true);
             foreach ($arr as  $item) {
-                if($item['trash'] > 0) {
+                if(isset($item['trash']) && $item['trash'] > 0) {
                     //$str_qr .= '('.$item['idorder'].','.$item['idcrosstype'].','.$item['parent'].','.$item['id'].','.$item['idparentcross'].','.$item['input_quality'].','.$item['idproduct'].','.$item['inp_session'].','.$item['trash'].'),';
                     $str_qr .= '('.$item['idorder'].','.$item['idcrosstype'].','.$item['parent'].','.$item['idparentcross'].','.$item['input_quality'].','.$item['idproduct'].','.$item['inp_session'].','.$item['trash'].'),';
                     $bool_str = true;
