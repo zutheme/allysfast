@@ -56,7 +56,7 @@ function upload_images(){
 	  var ImageURL = canvas.toDataURL('image/jpg', 1.0);
 	  var _csrf_token = document.getElementsByName("csrf-token")[0].getAttribute("content");
 	  var http = new XMLHttpRequest();
-	  var url = _url_host+"/admin/files/uploaddataurl";
+	  var url = _url_host+"admin/files/uploaddataurl";
 	  console.log(url);
 	  //var params = "file="+ImageURL;
 	  var params = JSON.stringify({"file":ImageURL});

@@ -469,7 +469,7 @@
   	<script src="{{ asset('dashboard/production/js/edit_update_category.js?v=0.0.3.6') }}"></script>	
   	{{-- <script src="{{ asset('dashboard/production/js/process_images/image_product.js.js?v=0.0.2') }}"></script> --}}
   	<script src="{{ asset('dashboard/production/js/uploadmultifile.js?v=0.8.9') }}"></script>
-    <script src="{{ asset('dashboard/production/js/media-galerry.js?v=0.6.3') }}"></script>
+    <script src="{{ asset('dashboard/production/js/media-galerry.js?v=0.6.4') }}"></script>
      <!-- Custom Theme Scripts -->
     {{--  <script src="{{ asset('dashboard/production/js/cross_product.js?v=0.0.5') }}"></script> --}}
     {{-- <script src="{{ asset('dashboard/build/js/custom.min.js') }}"></script> --}}
