@@ -66,7 +66,7 @@
 
   <link href="{{ asset('assets-tea/assets/demos/default/css/plugins.css') }}" rel="stylesheet" type="text/css">
 
-  <link href="{{ asset('assets-tea/assets/demos/default/css/components.css?v=0.0.9') }}" id="style_components" rel="stylesheet" type="text/css">
+  <link href="{{ asset('assets-tea/assets/demos/default/css/components.css?v=0.1.0') }}" id="style_components" rel="stylesheet" type="text/css">
 
   <link href="{{ asset('assets-tea/assets/demos/default/css/themes/default.css') }}" rel="stylesheet" id="style_theme" type="text/css">
 
