@@ -169,7 +169,7 @@
 									<div class="row">
 										<div class="form-group col-md-6">
 											<label class="control-label">Điện thoại</label>
-											<input type="tel" class="form-control c-square c-theme" name="phone" placeholder="" value="{{ $mobile }}">
+											<input type="tel" class="form-control c-square c-theme" name="phone" placeholder="" value="{{ $mobile }}" required="true">
 										</div>
 										<div class="col-md-6">
 											<label class="control-label">Họ Tên</label>
@@ -189,7 +189,7 @@
 
 									<label class="control-label">Địa chỉ</label>
 
-									<input type="text" class="form-control c-square c-theme" name="address" placeholder="" value="{{ $address }}">
+									<input type="text" class="form-control c-square c-theme" name="address" placeholder="" value="{{ $address }}" required>
 
 								</div>
 
@@ -201,9 +201,9 @@
 
 									<label class="control-label">Quận</label>
 
-										<select class="form-control c-square c-theme" name="sel_district">
+										<select class="form-control c-square c-theme" name="sel_district" required>
 
-											<option value="0">Chọn ... </option>
+											<option value="">Chọn ... </option>
 
 											@if(isset($rs_district))
 
@@ -227,9 +227,9 @@
 
 									<label class="control-label">Tỉnh/Thành</label>
 
-									<select class="form-control c-square c-theme" name="sel_citytown">
+									<select class="form-control c-square c-theme" name="sel_citytown" required>
 
-										<option value="0">Chọn ... </option>
+										<option value="">Chọn ... </option>
 
 										@if(isset($rs_citytown))
 

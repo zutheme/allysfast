@@ -15,7 +15,8 @@
 
 	$curent_idcategory = 0 ;
 
-	$curent_idcategory = Request::segment(2);
+	$curent_slug = Request::segment(1);
+	$curent_idcategory = $_idcategory;
 	$curent_posttype = Request::segment(3);
 
     function breadcrumb($categories, $curent_idcategory = 0, $char = 0, $depth = 0) {
@@ -116,8 +117,8 @@
 
 			<?php  $curent_class = ($curent_page == $i) ? 'class="c-active"':'';?>
 
-			<li <?php echo $curent_class ?>><a href="{{ url('/') }}/listproductbypage/{{ $curent_idcategory }}/{{ $i }}">{{ $i }}</a></li>
-
+			{{-- <li <?php echo $curent_class ?>><a href="{{ url('/') }}/listproductbypage/{{ $curent_idcategory }}/{{ $i }}">{{ $i }}</a></li> --}}
+			<li <?php echo $curent_class ?>><a href="{{ url('/') }}/{{ $curent_slug }}/page/{{ $i }}">{{ $i }}</a></li>
 			@endfor
 
 			{{-- <li class="c-next"><a href="#"><i class="fa fa-angle-right"></i></a></li> --}}

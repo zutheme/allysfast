@@ -172,6 +172,7 @@ class ProductController extends Controller
             return view('teamilk.product.index')->with('error',$errors);
         }
     }
+
     public function LatestProductByIdcate($_idcategory,$_limit){
         try {
             $qr_lpro = DB::select('call LatestProductByIdcateProcedure(?,?)',array($_idcategory, $_limit));
@@ -193,6 +194,29 @@ class ProductController extends Controller
             //$qr_lpro = DB::select('call ListViewProductByIdCateProcedure(?)',array($_idcategory));
             $rs_lpro = json_decode(json_encode($qr_lpro), true);     
              return view('teamilk.product.index')->with(compact('rs_lpro','_idcategory','rs_cat_product'));
+        } catch (\Illuminate\Database\QueryException $ex) {
+            $errors = new MessageBag(['error' => $ex->getMessage()]);
+            return view('teamilk.product.index')->with('error',$errors);
+        }
+    }
+     public function slugbypage($_slugcate, $_page = 1){
+        try {
+             $_limit = 100; $_idstore = 31;
+             $iduser = Auth::id();
+             $rs_lpro = array();
+             $_idcategory = 0;
+             $rs_cat_product = array();
+             $_idcategory = $this->search_slug_cate($_slugcate);
+            if(isset($_idcategory) && $_idcategory > 0){
+                $_posttype = "product";
+                //return $this->ListTypePostbyIdcate($_idcategory,$_posttype);
+                 $qr_cat_product = DB::select('call ListAllCatByTypeProcedure(?)',array('product'));
+                 $rs_cat_product = json_decode(json_encode($qr_cat_product), true);
+                 $qr_lpro = DB::select('call ListProductByIdcateProcedure(?,?,?,?,?)',array($_idcategory,$_page,$_idstore,$_limit,$iduser));
+                //$qr_lpro = DB::select('call ListViewProductByIdCateProcedure(?)',array($_idcategory));
+                $rs_lpro = json_decode(json_encode($qr_lpro), true);
+            }
+            return view('teamilk.product.index')->with(compact('rs_lpro','_idcategory','rs_cat_product'));
         } catch (\Illuminate\Database\QueryException $ex) {
             $errors = new MessageBag(['error' => $ex->getMessage()]);
             return view('teamilk.product.index')->with('error',$errors);

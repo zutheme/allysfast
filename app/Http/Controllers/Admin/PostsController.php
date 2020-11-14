@@ -103,6 +103,85 @@ class PostsController extends Controller
             return redirect()->route('admin.post.index')->with('error',$errors);
         }
     }
+    public function listpostbytype(Request $request,$posttype)
+    {
+         try {
+            $_filter = $request->get('filter');
+            $_start_date = session()->get('start_date');
+            $_end_date = session()->get('end_date');
+            if(!isset($_start_date)){
+                $_start_date = date('Y-m-d H:i:s',strtotime("-360 days"));
+                $request->session()->put('start_date', $_start_date); 
+            }
+            if(!isset($_end_date)){
+                $_end_date = date('Y-m-d H:i:s',strtotime("1 days"));
+                $request->session()->put('end_date', $_end_date);
+            }  
+            $_idstore = $request->get('idstore');
+            //$_idcategory = $request->get('idcategory');
+            $qr_posttype = DB::select('call findidposttypebynameProcedure(?)',array($posttype));
+            $rs_idposttype = json_decode(json_encode($qr_posttype), true);
+            if(isset($_id_post_type)){
+                $_id_post_type = $rs_idposttype[0]['idposttype'];
+            };
+            if(!isset($posttype)) {
+               $_id_post_type = 3;
+               $posttype ='post';
+             }
+            $_id_status_type = $request->get('id_status_type');
+            //$request->session()->put('idcategory', $_idcategory);
+            $request->session()->put('idstore', $_idstore);
+            $request->session()->put('id_post_type', $_id_post_type);
+            //$request->session()->forget('filter');
+            if(!isset($_idstore)){
+                $_idstore = 31;
+                session()->put('idstore',  $_idstore);
+            }
+            $qr_category = DB::select('call ListParentCatByTypeProcedure(?)',array($posttype));
+            $categories = json_decode(json_encode($qr_category), true);
+            $list_checks = $request->input('list_check');
+            $_idcategory = 0;
+            $_list_idcat ='';
+            if($list_checks){
+                foreach ($list_checks as $item) {
+                  //$iditem = explode("-",$item);
+                  $idcategory = $item;
+                  $_list_idcat .= "(".$idcategory."),";
+                }
+                $_list_idcat = rtrim($_list_idcat,", ");
+            }else{
+                foreach ($categories as $key => $item) { 
+                     $_list_idcat .= "(".$item['idcategory']."),";
+                  }
+                 $_list_idcat = rtrim($_list_idcat,", ");
+            }   
+            // if(!isset($_idcategory)){
+            //     $_idcategory=0;
+            //     session()->put('idcategory',  $_idcategory);
+            // }
+            if(!isset($_id_post_type)){
+                $_id_post_type=3;
+                session()->put('id_post_type',  $_id_post_type);
+            }
+            if(!isset($_id_status_type)){
+                $_id_status_type=4;
+                session()->put('id_status_type',  $_id_status_type);
+            }
+            $statustypes = status_type::all()->toArray();
+            $post_types = PostType::all()->toArray();
+            
+            $errors = $_start_date.',end_date'.$_end_date.', list_idcat:'.$_list_idcat.',id_post_type:'.$_id_post_type.',id_status_type'.$_id_status_type;
+            //$result = DB::select('call ListAllProductProcedure(?,?,?,?,?,?)',array($_start_date,$_end_date, $_idcategory, $_id_post_type, $_id_status_type,$_idstore));
+            $result = DB::select('call ReportProductProcedure(?,?,?,?,?,?)',array('', $_id_post_type, $_id_status_type, $_idstore, $_start_date, $_end_date));
+            $products = json_decode(json_encode($result), true);     
+            return view('admin.post.index',compact('products','errors','post_types','categories'))->with('error',$errors);
+            //return redirect('admin/listpostbytype/'.$posttype)->with('products','errors','post_types','categories');
+
+        } catch (\Illuminate\Database\QueryException $ex) {
+            $errors = new MessageBag(['error' => $ex->getMessage()]);
+            return redirect()->route('admin.post.index')->with('error',$errors);
+        }
+    }
     public function listpost(Request $request,$posttype)
     {
          try {
@@ -119,12 +198,11 @@ class PostsController extends Controller
             }  
             $_idstore = $request->get('idstore');
             //$_idcategory = $request->get('idcategory');
-            $posttype = $request->get('posttype');
+            //$posttype = $request->get('posttype');
             $_id_post_type = $request->get('sel_id_post_type');
             if(!isset($_id_post_type)) {
                $_id_post_type = 3;
              }
-            
             $_id_status_type = $request->get('id_status_type');
             //$request->session()->put('idcategory', $_idcategory);
             $request->session()->put('idstore', $_idstore);
@@ -273,7 +351,8 @@ class PostsController extends Controller
             }
              if($request->hasfile('thumbnail')) {
                         $file = $request->file('thumbnail');
-                        $_name_origin = $file->getClientOriginalName();
+                        //$_name_origin = $file->getClientOriginalName();
+                        $_name_origin ='';
                         //$file->move(public_path().'/images/', $name);  
                         $_typefile = $file->getClientOriginalExtension();
                         $dir = 'uploads/';
@@ -292,7 +371,8 @@ class PostsController extends Controller
             
              if($request->hasfile('file_attach')) {
                 foreach($request->file('file_attach') as $file) {
-                    $_name_origin = $file->getClientOriginalName();
+                    //$_name_origin = $file->getClientOriginalName();
+                    $_name_origin = '';
                     //$file->move(public_path().'/images/', $name);  
                     $_typefile = $file->getClientOriginalExtension();
                     $dir = 'uploads/';
@@ -535,7 +615,8 @@ class PostsController extends Controller
                     }
                 }
                 foreach($request->file('file_attach') as $file) {
-                    $_name_origin = $file->getClientOriginalName();
+                    //$_name_origin = $file->getClientOriginalName();
+                    $_name_origin ='';
                     $_typefile = $file->getClientOriginalExtension();
                     $dir = 'uploads/';
                     $path = base_path($dir . date('Y') . '/'.date('m').'/'.date('d').'/');

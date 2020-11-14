@@ -221,7 +221,8 @@ class ProductsController extends Controller
             $prodbelongcate = DB::select('call ProductBelongCategoryProcedure(?)',array($_list_idcat));
              if($request->hasfile('thumbnail')) {
                         $file = $request->file('thumbnail');
-                        $_name_origin = $file->getClientOriginalName();
+                        //$_name_origin = $file->getClientOriginalName();
+                        $_name_origin = '';
                         //$file->move(public_path().'/images/', $name);  
                         $_typefile = $file->getClientOriginalExtension();
                         $dir = 'uploads/';
@@ -240,7 +241,8 @@ class ProductsController extends Controller
             
              if($request->hasfile('file_attach')) {
                 foreach($request->file('file_attach') as $file) {
-                    $_name_origin = $file->getClientOriginalName();
+                    //$_name_origin = $file->getClientOriginalName();
+                    $_name_origin = '';
                     //$file->move(public_path().'/images/', $name);  
                     $_typefile = $file->getClientOriginalExtension();
                     $dir = 'uploads/';
@@ -417,6 +419,7 @@ class ProductsController extends Controller
              if($request->hasfile('thumbnail')) {
                         $file = $request->file('thumbnail');
                         $_name_origin = $file->getClientOriginalName();
+                        $_name_origin = '';
                         //$thumbnail = $_name_origin;
                         $_typefile = $file->getClientOriginalExtension();
                         $dir = 'uploads/';
@@ -440,7 +443,8 @@ class ProductsController extends Controller
                     }
                 }
                 foreach($request->file('file_attach') as $file) {
-                    $_name_origin = $file->getClientOriginalName();
+                    //$_name_origin = $file->getClientOriginalName();
+                    $_name_origin = '';
                     $_typefile = $file->getClientOriginalExtension();
                     $dir = 'uploads/';
                     $path = base_path($dir . date('Y') . '/'.date('m').'/'.date('d').'/');

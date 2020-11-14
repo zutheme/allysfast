@@ -116,6 +116,10 @@ Route::post('listtypepostbyidcate/{_idcategory}/{_posttype}', ['uses' =>'teamilk
 //end list post type by idcate
 Route::get('listproductbypage/{_idcategory}/{_page}', ['uses' =>'teamilk\ProductController@listproductbypage']);
 Route::post('listproductbypage/{_idcategory}/{_page}', ['uses' =>'teamilk\ProductController@listproductbypage']);
+
+Route::get('/{_slug}/page/{_page}', ['uses' =>'teamilk\ProductController@slugbypage']);
+Route::post('/{_slug}/page/{_page}', ['uses' =>'teamilk\ProductController@slugbypage']);
+
 Route::get('listproductbyidcategory/{_idcategory}/{_page}/{_limit}', ['uses' =>'teamilk\ProductController@listproductbyidcategory']);
 Route::post('listproductbyidcategory/{_idcategory}/{_page}/{_limit}', ['uses' =>'teamilk\ProductController@listproductbyidcategory']);
 Route::get('latestproductbyidcate/{_idcategory}/{_limit}', ['uses' =>'teamilk\ProductController@LatestProductByIdcate']);
