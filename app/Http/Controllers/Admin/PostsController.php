@@ -121,7 +121,7 @@ class PostsController extends Controller
             //$_idcategory = $request->get('idcategory');
             $qr_posttype = DB::select('call findidposttypebynameProcedure(?)',array($posttype));
             $rs_idposttype = json_decode(json_encode($qr_posttype), true);
-            if(isset($_id_post_type)){
+            if(isset($rs_idposttype)){
                 $_id_post_type = $rs_idposttype[0]['idposttype'];
             };
             if(!isset($posttype)) {

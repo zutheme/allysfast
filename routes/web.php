@@ -247,6 +247,10 @@ Route::group(['middleware' => 'auth'], function() {
 	//post management
 	Route::post('admin/listpost/{posttype}',['uses' =>'Admin\PostsController@listpost', 'as'=>'admin']);
 	Route::get('admin/listpost/{posttype}',['uses' =>'Admin\PostsController@listpost', 'as'=>'admin']);
+
+	Route::post('admin/listpostbytype/{posttype}',['uses' =>'Admin\PostsController@listpostbytype', 'as'=>'admin']);
+	Route::get('admin/listpostbytype/{posttype}',['uses' =>'Admin\PostsController@listpostbytype', 'as'=>'admin']);
+
 	Route::get('admin/post/listcatbyidcat', 'Admin\CategoryController@listcatbyidcat');
 	Route::post('admin/post/listcatbyidcat', 'Admin\CategoryController@listcatbyidcat');
 	Route::get('admin/post/editbycattype/{idproduct}/{namcattype}/{idposttype}', 'Admin\PostsController@editbycattype');
