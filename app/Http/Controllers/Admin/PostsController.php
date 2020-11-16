@@ -174,7 +174,7 @@ class PostsController extends Controller
             //$result = DB::select('call ListAllProductProcedure(?,?,?,?,?,?)',array($_start_date,$_end_date, $_idcategory, $_id_post_type, $_id_status_type,$_idstore));
             $result = DB::select('call ReportProductProcedure(?,?,?,?,?,?)',array('', $_id_post_type, $_id_status_type, $_idstore, $_start_date, $_end_date));
             $products = json_decode(json_encode($result), true);     
-            return view('admin.post.index',compact('products','errors','post_types','categories'))->with('error',$errors);
+            return view('admin.post.index',compact('products','errors','post_types','categories','posttype','_id_post_type'))->with('error',$errors);
             //return redirect('admin/listpostbytype/'.$posttype)->with('products','errors','post_types','categories');
 
         } catch (\Illuminate\Database\QueryException $ex) {
@@ -463,9 +463,9 @@ class PostsController extends Controller
         return view('admin.post.edit',compact('gallery','product','posttypes','categories','statustypes','str','idproduct','sel_cross_byidproduct','sel_parent_cross_product','sel_cross_type','rs_sel_impbyidpro','idposttype','_namecattype'));
         //return view('admin.post.edit',compact('gallery','product','posttypes','categories','statustypes','str','idproduct','size','color','sel_cross_byidproduct','sel_parent_cross_product','sel_cross_type','rs_sel_impbyidpro'));
     }
-    public function edit($idproduct)
+    public function editbyposttype($idproduct, $_namecattype, $idposttype)
     {
-        $_namecattype="post";
+        //$_namecattype="post";
         $_idstore = 31;
         $qr_cateselected = DB::select('call SelCateSelectedProcedure(?)',array($idproduct));
         $cate_selected = json_decode(json_encode($qr_cateselected), true);
@@ -477,6 +477,48 @@ class PostsController extends Controller
 
         $qr_product = DB::select('call EditDetailByIdProcedure(?,?)',array($idproduct, $_idstore));
         $product = json_decode(json_encode($qr_product), true);
+        //$qr_product = DB::select('call SelProductByIdProcedure(?,?)',array($idproduct,$_idstore));
+        //$product = json_decode(json_encode($qr_product), true);
+        $_idgalery = 2;
+        $qr_gallery = DB::select('call SelGalleryProcedure(?,?)',array($idproduct,$_idgalery));
+        $gallery = json_decode(json_encode($qr_gallery), true);
+
+        //$qr_size = DB::select('call SelAllSizeProcedure');
+        //$size = json_decode(json_encode($qr_size), true);
+
+        //$qr_color = DB::select('call SelAllColorProcedure');
+        //$color = json_decode(json_encode($qr_color), true);
+        $qr_sel_cross_byidproduct = DB::select('call SelProductCrossByIdProcedure(?)',array($idproduct));
+        $sel_cross_byidproduct = json_decode(json_encode($qr_sel_cross_byidproduct), true);
+        
+        $qr_sel_impbyidpro = DB::select('call SelImportByIDProductProcedure(?,?)',array($idproduct,$_idstore));
+        $rs_sel_impbyidpro = json_decode(json_encode($qr_sel_impbyidpro), true);
+        
+        $qr_parent_cross_product = DB::select('call SelParentProductCrossProcedure(?)',array($idproduct));
+        $sel_parent_cross_product = json_decode(json_encode($qr_parent_cross_product), true);
+
+        $qr_cross_type = DB::select('call SelCrossTypeProcedure');
+        $sel_cross_type = json_decode(json_encode($qr_cross_type), true);
+        return view('admin.post.edit',compact('gallery','product','posttypes','categories','statustypes','str','idproduct','sel_cross_byidproduct','sel_parent_cross_product','sel_cross_type','rs_sel_impbyidpro','idposttype','_namecattype'));
+        //return view('admin.post.edit',compact('gallery','product','posttypes','categories','statustypes','str','idproduct','size','color','sel_cross_byidproduct','sel_parent_cross_product','sel_cross_type','rs_sel_impbyidpro'));
+    }
+    public function edit($idproduct)
+    {
+        $_namecattype="post";
+        $_idstore = 31;
+        $qr_cateselected = DB::select('call SelCateSelectedProcedure(?)',array($idproduct));
+        $cate_selected = json_decode(json_encode($qr_cateselected), true);
+        $str = $this->all_category($_namecattype, $cate_selected );
+        $statustypes = status_type::all()->toArray();
+        $posttypes = PostType::all()->toArray();
+        
+        $qr_product = DB::select('call EditDetailByIdProcedure(?,?)',array($idproduct, $_idstore));
+        $product = json_decode(json_encode($qr_product), true);
+
+        $result = DB::select('call ListParentCatByTypeProcedure(?)',array($_namecattype));
+        $categories = json_decode(json_encode($result), true);
+
+        
         //$qr_product = DB::select('call SelProductByIdProcedure(?,?)',array($idproduct,$_idstore));
         //$product = json_decode(json_encode($qr_product), true);
         $_idgalery = 2;
@@ -675,7 +717,7 @@ class PostsController extends Controller
             $errors = new MessageBag(['error' => $ex->getMessage()]);
             return redirect()->back()->withInput()->withErrors($errors);
         }
-        $message = "update ";
+        $message = "update ".$_id_post_type;
         return redirect()->action('Admin\PostsController@edit',$idproduct)->with('getlist',$message);
     }
 

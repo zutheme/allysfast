@@ -75,7 +75,7 @@
 	              <textarea name="short_desc" class="form-control" rows="3" cols="50" placeholder="Mô tả vắn tắt">{{ $product[0]['short_desc'] }}</textarea>
 	            </div>
 	          </div>
-	           <div class="ln_solid"></div>
+	        <div class="ln_solid"></div>
 			<div class="form-group"> 
 				<div class="col-lg-12">
 					@if(isset($gallery)) 

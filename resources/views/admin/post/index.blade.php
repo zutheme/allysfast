@@ -40,8 +40,8 @@
 
 <?php 
       
-      $posttype = app('request')->input('posttype');
-      if(!isset($posttype)) $posttype ='post';
+      //$posttype = app('request')->input('posttype');
+      $posttype = Request::segment(3);
       //$lists = json_decode($list_selected, true);
       $_start_date_sl = session()->get('start_date');
       $_end_date_sl = session()->get('end_date');
@@ -51,10 +51,12 @@
       $_id_store = session()->get('idstore');
       $_namecattype = isset($_namecattype) ? $_namecattype : 'post';
       $id_post_type = isset($id_post_type) ? $id_post_type : 3;
+      $posttype = isset($posttype) ? $posttype : 'post';
       $_idcategory = isset($_idcategory_sl) ? $_idcategory_sl : Request::segment(4);
       $_id_post_type = isset($_id_post_type_sl) ? $_id_post_type_sl : Request::segment(5);
       $_id_status_type = isset($_id_status_type_sl) ? $_id_status_type_sl : Request::segment(6);
       //$_sel_receive = $lists['_sel_receive'];
+      $_namecattype = $posttype; 
 ?>
 <script type="text/javascript">
 
@@ -275,11 +277,11 @@
                       @endif
                       <td class="btn-control-action">
                         <input type="hidden" name="idpost_row" value="{{ $row['idproduct'] }}">
-                        <a href="{{ url('admin/post/editbycattype/'.$row['idproduct'].'/'.$_namecattype.'/'.$id_post_type) }}" class="info-number"><i class="fa fa-pencil-square"></i></a>
+                        <a href="{{ url('admin/post/editbycattype/'.$row['idproduct'].'/'.$_namecattype.'/'.$_id_post_type) }}" class="info-number"><i class="fa fa-pencil-square"></i></a>
+                      {{--  <a href="{{ action('Admin\PostsController@edit',$row['idproduct']) }}" class="info-number"><i class="fa fa-pencil-square"></i></a> --}}
                       </td>    
                     </tr>
-                    @endforeach                
-
+                    @endforeach  
                   </tbody>
 
               </table>

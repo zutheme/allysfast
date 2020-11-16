@@ -74,8 +74,7 @@ class ProductsController extends Controller
             return redirect()->route('admin.product.index')->with('error',$errors);
         }
     }
-    public function listproduct(Request $request)
-    {
+    public function listproduct(Request $request){
          try {
             $_filter = $request->get('filter');
             $_start_date_get = $request->get('_start_date');
@@ -135,7 +134,6 @@ class ProductsController extends Controller
             return redirect()->route('admin.product.index')->with('error',$errors);
         }
     }
-
     /**
      * Show the form for creating a new resource.
      *
