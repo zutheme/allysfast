@@ -82,7 +82,7 @@ class LoginController extends Controller
       if ($validator->fails()) {
         //return redirect()->back()->withErrors($validator)->withInput();
          //$errors = $validator->errors();
-        return redirect('login')->withErrors($validator)->withInput();
+        return redirect('client/login')->withErrors($validator)->withInput();
       } else {
         //$email = $request->input('email');
         $name = $request->input('name');

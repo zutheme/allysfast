@@ -2,9 +2,19 @@
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      @if(isset($slider))
+            <?php $count = 0; $active = "active"; ?>
+            @foreach($slider as $row)
+              <?php if($count > 0) {
+                  $active = "";
+              } ?>
+              <li data-target="#myCarousel" data-slide-to="<?php echo $count; ?>" class="<?php echo $active; ?>"></li>
+               <?php $count++; ?>
+            @endforeach
+          @endif
+      <!-- <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
       <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li> -->
     </ol>
     <!-- Wrapper for slides -->
     <div class="carousel-inner">

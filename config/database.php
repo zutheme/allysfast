@@ -686,7 +686,7 @@ return [
 
 
 
-            'host' => env('DB_HOST', '127.0.0.1'),
+            'host' => env('DB_HOST', '45.117.168.156'),
 
 
 
@@ -718,7 +718,7 @@ return [
 
 
 
-            'database' => env('DB_DATABASE', 'dbdichvu'),
+            'database' => env('DB_DATABASE', 'allysfast_shopcart'),
 
 
 
@@ -734,7 +734,7 @@ return [
 
 
 
-            'username' => env('DB_USERNAME', 'root'),
+            'username' => env('DB_USERNAME', 'allysfast_shopcart'),
 
 
 
@@ -750,7 +750,7 @@ return [
 
 
 
-            'password' => env('DB_PASSWORD', 'root'),
+            'password' => env('DB_PASSWORD', 'shopcart'),
 
 
 
@@ -958,7 +958,7 @@ return [
 
 
 
-            'database' => env('DB_DATABASE', 'dbdichvu'),
+            'database' => env('DB_DATABASE', 'allysfast_shopcart'),
 
 
 
@@ -974,7 +974,7 @@ return [
 
 
 
-            'username' => env('DB_USERNAME', 'root'),
+            'username' => env('DB_USERNAME', 'allysfast_shopcart'),
 
 
 
@@ -990,7 +990,7 @@ return [
 
 
 
-            'password' => env('DB_PASSWORD', 'root'),
+            'password' => env('DB_PASSWORD', 'allysfast_shopcart'),
 
 
 

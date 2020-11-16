@@ -59,7 +59,7 @@
 
 						<div class="panel-body c-panel-body">
 
-							<form class="c-form-login" method="post" action="{{ url('postlogin') }}">
+							<form class="c-form-login" method="post" action="{{ url('client/postlogin') }}">
 
 								{{ csrf_field() }}
 
@@ -169,7 +169,7 @@
 
 							</div>
 
-							<form class="c-form-register c-margin-t-20" method="post" action="{{ url('register') }}">
+							<form class="c-form-register c-margin-t-20" method="post" action="{{ url('client/register') }}">
 
 								{{ csrf_field() }}
 								<div class="form-group">
