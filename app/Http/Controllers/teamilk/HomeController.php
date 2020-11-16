@@ -29,7 +29,7 @@ class HomeController extends Controller
             $_limit = 4;
             $_idstore = 31;
             $_limit1 = 4;
-            $_idcategory_slider = 3;
+            $_idcategory_slider = 95;
             $qr_slider1 = DB::select('call LatestProductByIdcateProcedure(?,?,?)',array($_idcategory_slider, $_idstore, $_limit1));
             $slider1 = json_decode(json_encode($qr_slider1), true);
             $_idcategory_popular = 9;
