@@ -289,3 +289,19 @@ header .logo-header .logo-image {
     background: transparent;
     border-color: #FFFFFF;
 }
+.c-layout-footer-10 .c-layout-footer-10-content .c-layout-footer-10-list > .c-layout-footer-10-list-item a {
+    font-weight: 400;
+    font-size: 14px;
+}
+.c-layout-footer-10 .c-layout-footer-10-content .c-layout-footer-10-desc {
+    color: #4f4f4f;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    font-weight: 300;
+    padding-right: 80px;
+    line-height: 1.7em;
+}
+.c-layout-footer-10 .c-layout-footer-10-content .c-layout-footer-10-list > .c-layout-footer-10-list-item > a{
+    color: #7e7d7d;
+    font-size: 14px;
+}
