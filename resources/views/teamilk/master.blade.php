@@ -327,6 +327,7 @@
       src="https://www.facebook.com/tr?id=978611442541383&ev=PageView&noscript=1"
       /></noscript>
       <!-- End Facebook Pixel Code -->
+      
       <!-- Facebook Pixel Code -->
       <script>
       !function(f,b,e,v,n,t,s)
@@ -344,6 +345,7 @@
       src="https://www.facebook.com/tr?id=744337253095762&ev=PageView&noscript=1"
       /></noscript>
       <!-- End Facebook Pixel Code -->
+
       <!-- Global site tag (gtag.js) - Google Analytics -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-161438149-1">
 		</script>

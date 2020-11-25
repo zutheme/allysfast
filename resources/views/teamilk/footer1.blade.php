@@ -48,7 +48,7 @@
                 <div class="c-layout-footer-10-title-line"><span class="c-theme-bg"></span></div>
               </div>
              <ul class="c-layout-footer-10-list">
-                <li class="c-layout-footer-10-list-item"><a href="#"> Tầng 5, Tòa nhà 132-134 Điện Biên Phủ, Phường Đa Kao, Quận 1</a></li>
+                <li class="c-layout-footer-10-list-item"><a href="#"> Villa 9 Đ5 Saigon Pearl - 92 Nguyễn Hữu Cảnh, P.22, Quận Bình Thạnh</a></li>
                 <li class="c-layout-footer-10-list-item"><a href="#">Thành phố Hồ Chí Minh, Việt Nam</a></li>
                 <li class="c-layout-footer-10-list-item"><a href="tel:0909732528">0909.732.528</a></li>
                 <li class="c-layout-footer-10-list-item"><a href="#">allysfast@gmail.com</a></li>
