@@ -686,7 +686,7 @@ return [
 
 
 
-            'host' => env('DB_HOST', '45.117.168.156'),
+            'host' => env('DB_HOST', 'localhost'),
 
 
 
@@ -990,7 +990,7 @@ return [
 
 
 
-            'password' => env('DB_PASSWORD', 'allysfast_shopcart'),
+            'password' => env('DB_PASSWORD', 'shopcart'),
 
 
 
@@ -1407,7 +1407,6 @@ return [
 
 
     | your application. Using this information, we can determine which of
-
 
 
 
